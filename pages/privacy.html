@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tesla Initiate Privacy Policy — Learn how we protect personal information, maintain GDPR compliance, and safeguard financial transaction records.">
+    <title>Privacy Policy — Tesla Initiate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --red: #e82127;
+            --red-dark: #c41a1f;
+            --red-glow: rgba(232, 33, 39, 0.3);
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0f0f0f;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border-color: #1e1e1e;
+            --border-light: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a6;
+            --text-muted: #6b6b6b;
+            --nav-height: 70px;
+            --container-max: 1280px;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .nav-brand .tesla-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+            border-right: 2px solid var(--border-light);
+            padding-right: 12px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-links a.meet-greet {
+            color: var(--red);
+            font-weight: 500;
+        }
+        .nav-links a.meet-greet::before {
+            content: '🎥';
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-login {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+        .btn-login:hover { background: rgba(255,255,255,0.12); }
+        .btn-signup {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--red);
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn-signup:hover { background: var(--red-dark); box-shadow: 0 4px 20px var(--red-glow); }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: var(--nav-height);
+            padding: 110px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(232, 33, 39, 0.08) 0%, transparent 65%), #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .page-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: var(--red);
+            text-transform: uppercase;
+            padding: 6px 18px;
+            background: rgba(232, 33, 39, 0.1);
+            border: 1px solid rgba(232, 33, 39, 0.25);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .page-hero h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+        .page-hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 660px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== LEGAL LAYOUT ===== */
+        .legal-section {
+            padding: 60px 0 100px;
+        }
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 48px;
+        }
+        .legal-nav {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .legal-nav h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .legal-nav a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+        .legal-nav a:hover {
+            color: var(--red);
+            background: rgba(232, 33, 39, 0.08);
+        }
+        .legal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 50px 44px;
+        }
+        .legal-block {
+            margin-bottom: 44px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .legal-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .legal-block h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .legal-num {
+            font-size: 13px;
+            color: var(--red);
+            background: rgba(232, 33, 39, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+        .legal-block p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .legal-block ul {
+            margin: 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .legal-block ul li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.7;
+        }
+        .legal-block ul li::before {
+            content: '•';
+            color: var(--red);
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 0;
+            background: var(--bg-secondary);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        .footer-brand .tesla-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+        }
+        .footer-brand .brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-left: 12px;
+            border-left: 2px solid var(--border-light);
+            padding-left: 12px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 360px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .footer-socials a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover { color: var(--red); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 24px;
+        }
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            text-align: right;
+            line-height: 1.6;
+        }
+        .footer-disclaimer strong { color: #f59e0b; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .legal-layout { grid-template-columns: 1fr; }
+            .legal-nav { position: static; max-height: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(10,10,10,0.98);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-disclaimer { text-align: center; }
+            .page-hero { padding: 80px 0 50px; }
+            .page-hero h1 { font-size: 32px; }
+            .legal-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="tesla-logo">TESLA</span>
+                <span>TESLA INITIATE</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="services.html">Invest</a>
+                <a href="index.html#plans">Plans</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="meet-and-greet.html" class="meet-greet">Meet &amp; Greet</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="location.href='faq.html'">Login</button>
+                <button class="btn-signup" onclick="location.href='index.html#plans'">Sign Up</button>
+                <div class="mobile-toggle" id="mobileToggle" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-tag">LEGAL COMPLIANCE</span>
+            <h1>Privacy <span style="color: var(--red);">Policy</span></h1>
+            <p>We are committed to protecting your personal data with full transparency, security, and respect for your rights.</p>
+        </div>
+    </header>
+
+    <!-- ===== LEGAL MAIN ===== -->
+    <section class="legal-section">
+        <div class="container">
+            <div class="legal-layout">
+                <!-- Sidebar Nav -->
+                <aside class="legal-nav">
+                    <h4>Navigation</h4>
+                    <a href="#s1">01 Our Commitment</a>
+                    <a href="#s2">02 Legal Grounds</a>
+                    <a href="#s3">03 Data Sources</a>
+                    <a href="#s4">04 Data We Collect</a>
+                    <a href="#s5">05 Tracking &amp; Cookies</a>
+                    <a href="#s6">06 How We Use Data</a>
+                    <a href="#s7">07 Data Sharing</a>
+                    <a href="#s8">08 International Transfers</a>
+                    <a href="#s9">09 Data Protection</a>
+                    <a href="#s10">10 Data Retention</a>
+                    <a href="#s11">11 Your Rights</a>
+                    <a href="#s12">12 Contact &amp; DPO</a>
+                    <a href="#s13">13 Policy Updates</a>
+                </aside>
+
+                <!-- Document Body -->
+                <div class="legal-content">
+                    <div class="legal-block" id="s1">
+                        <h2><span class="legal-num">01</span> Our Commitment to You</h2>
+                        <p>Tesla Initiate is fully committed to protecting your personal data and respecting your privacy. This Privacy Policy applies to all services offered through our platform, website, and applications.</p>
+                        <p>We process all personal data in strict accordance with the General Data Protection Regulation (GDPR) 679/2016 (EU) and applicable national privacy legislation. We maintain robust administrative, technical, and physical safeguards to ensure the confidentiality, integrity, and availability of your information at all times.</p>
+                    </div>
+
+                    <div class="legal-block" id="s2">
+                        <h2><span class="legal-num">02</span> Legal Grounds for Data Collection</h2>
+                        <p>We collect and process your personal data only where a lawful basis exists under Article 6 of the GDPR. Our processing activities are grounded in the following legal bases:</p>
+                        <ul>
+                            <li><strong>Contractual Performance:</strong> Necessary to maintain your account, execute deposits and orders, and manage portfolio allocations.</li>
+                            <li><strong>Legal &amp; Regulatory Compliance:</strong> Strict obligation to satisfy anti-money laundering (AML) directives, counter-terrorist financing (CTF), and KYC reporting.</li>
+                            <li><strong>Legitimate Interests:</strong> Protecting platform integrity, detecting fraud, improving software telemetry, and securing capital.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-block" id="s3">
+                        <h2><span class="legal-num">03</span> Data Reception Sources</h2>
+                        <p>We receive personal information through two primary channels:</p>
+                        <ul>
+                            <li><strong>Voluntary Submissions:</strong> Information you actively provide during account registration, profile updates, support requests, or other direct communications with us.</li>
+                            <li><strong>Automatic Collection:</strong> Data gathered automatically as you interact with our platform, including during transactions, navigation, and service usage, via cookies and similar technologies.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-block" id="s4">
+                        <h2><span class="legal-num">04</span> Data We Collect</h2>
+                        <p>Depending on your tier of service, we collect contact credentials (name, email, phone number), identity documents (government passport, national ID card, proof of residential address), transaction histories, wallet addresses, and browser device diagnostics.</p>
+                    </div>
+
+                    <div class="legal-block" id="s5">
+                        <h2><span class="legal-num">05</span> Tracking &amp; Cookies</h2>
+                        <p>Our platform employs a range of tracking technologies to enhance your experience and improve service performance:</p>
+                        <p>These technologies are used for session management, analytics, personalization, fraud prevention, and overall platform performance improvement. You may configure your browser to refuse cookies, though this may affect certain functionality.</p>
+                    </div>
+
+                    <div class="legal-block" id="s6">
+                        <h2><span class="legal-num">06</span> How We Use Your Data</h2>
+                        <p>Your personal data is used strictly for legitimate, defined purposes:</p>
+                        <ul>
+                            <li>Providing, operating, and improving our platform and services</li>
+                            <li>Sending relevant marketing communications (with your consent)</li>
+                            <li>Conducting analytics, user research, and platform optimization</li>
+                            <li>Preventing fraud, abuse, and unauthorized account access</li>
+                            <li>Enforcing our Terms of Service and other platform policies</li>
+                            <li>Meeting legal, regulatory, and compliance obligations</li>
+                        </ul>
+                        <p>We do not sell your personal data to third parties. All data usage is governed by this policy and applicable privacy laws.</p>
+                    </div>
+
+                    <div class="legal-block" id="s7">
+                        <h2><span class="legal-num">07</span> Data Sharing Partners</h2>
+                        <p>We may share your personal data with trusted parties in limited, well-defined circumstances:</p>
+                        <p>All third-party partners are contractually bound to handle your data with the same level of protection we provide, in accordance with GDPR requirements.</p>
+                    </div>
+
+                    <div class="legal-block" id="s8">
+                        <h2><span class="legal-num">08</span> International Data Transfers</h2>
+                        <p>Your data may be transferred to, and processed in, countries outside the European Economic Area (EEA). Where such transfers occur, we ensure appropriate safeguards are in place:</p>
+                        <ul>
+                            <li>Transfers only to countries recognised by the EU Commission as providing adequate data protection</li>
+                            <li>Use of Standard Contractual Clauses (SCCs) approved by the European Commission</li>
+                            <li>Binding Corporate Rules where applicable within our corporate structure</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-block" id="s9" style="scroll-margin-top: 100px;">
+                        <h2><span class="legal-num">09</span> Data Protection Measures &amp; AML</h2>
+                        <p>We implement enterprise-grade security across all layers of our infrastructure to protect your personal data from unauthorized access, loss, or disclosure:</p>
+                        <ul>
+                            <li><strong>Administrative Safeguards:</strong> Role-based access controls, staff background vetting, and compliance audits.</li>
+                            <li><strong>Technical Safeguards:</strong> Multi-signature cold storage, end-to-end 256-bit encryption, and intrusion detection.</li>
+                            <li><strong>Physical Safeguards:</strong> Biometrically restricted data center installations.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-block" id="s10">
+                        <h2><span class="legal-num">10</span> Data Retention</h2>
+                        <p>We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, including for the purposes of satisfying legal, accounting, or reporting requirements.</p>
+                        <p>Financial transaction data may be retained for up to 7 years to comply with tax and anti-money-laundering regulations. Upon account closure, we will delete or anonymise your personal data, subject to mandatory retention obligations.</p>
+                    </div>
+
+                    <div class="legal-block" id="s11">
+                        <h2><span class="legal-num">11</span> Your Rights Under GDPR</h2>
+                        <p>Under GDPR, you have the following rights regarding your personal data. To exercise any of these rights, contact our Data Protection Officer:</p>
+                        <ul>
+                            <li><strong>Right of Access:</strong> Request a copy of all personal data we hold about you at any time.</li>
+                            <li><strong>Right to Portability:</strong> Receive your data in a structured, machine-readable format.</li>
+                            <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete personal data.</li>
+                            <li><strong>Right to Erasure:</strong> Request deletion of your personal data ("right to be forgotten").</li>
+                            <li><strong>Right to Object:</strong> Object to processing of your data for direct marketing purposes.</li>
+                            <li><strong>Right to Restriction:</strong> Request that we restrict the processing of your personal data.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-block" id="s12">
+                        <h2><span class="legal-num">12</span> Contact &amp; Data Protection Officer</h2>
+                        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our General Data Protection Officer:</p>
+                        <p><strong>General Data Protection Officer</strong><br>Tesla Initiate Platform<br>Email: <a href="mailto:info@teslainitiate.online" style="color: var(--red);">info@teslainitiate.online</a><br>Response time: Within 30 days of receipt</p>
+                    </div>
+
+                    <div class="legal-block" id="s13">
+                        <h2><span class="legal-num">13</span> Policy Updates</h2>
+                        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. We will notify you of any material changes through a prominent notice on our platform or via email.</p>
+                        <p>Current version: January 1, 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center;">
+                        <span class="tesla-logo">TESLA</span>
+                        <span class="brand-name">TESLA INITIATE</span>
+                    </div>
+                    <p>Your all-in-one investment platform powered by Tesla technology — stocks, crypto, EVs, solar, and robotics. Trusted by investors in 89+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="services.html">Investments</a>
+                    <a href="services.html#trading">Stock Trading</a>
+                    <a href="services.html#crypto">Crypto Wallet</a>
+                    <a href="inventory.html">EV Marketplace</a>
+                    <a href="services.html#solar">Solar &amp; Energy</a>
+                    <a href="services.html#robotics">Optimus Robotics</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="about.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="terms.html">Risk Disclosure</a>
+                    <a href="privacy.html">AML Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">&copy; 2026 Tesla Initiate. All rights reserved.</div>
+                <div class="footer-disclaimer"><strong>Risk Warning:</strong> Trading and investing involve significant risk. Past performance is not indicative of future results. Please read our full risk disclosure before committing any funds.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

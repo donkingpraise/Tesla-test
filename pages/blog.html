@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tesla Initiate Blog — Institutional insights, quantitative analysis, clean energy updates, and future technology investment reports.">
+    <title>Blog &amp; Insights — Tesla Initiate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --red: #e82127;
+            --red-dark: #c41a1f;
+            --red-glow: rgba(232, 33, 39, 0.3);
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0f0f0f;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border-color: #1e1e1e;
+            --border-light: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a6;
+            --text-muted: #6b6b6b;
+            --nav-height: 70px;
+            --container-max: 1280px;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .nav-brand .tesla-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+            border-right: 2px solid var(--border-light);
+            padding-right: 12px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+        }
+        .nav-links a.meet-greet {
+            color: var(--red);
+            font-weight: 500;
+        }
+        .nav-links a.meet-greet::before {
+            content: '🎥';
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-login {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+        .btn-login:hover { background: rgba(255,255,255,0.12); }
+        .btn-signup {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--red);
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn-signup:hover { background: var(--red-dark); box-shadow: 0 4px 20px var(--red-glow); }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: var(--nav-height);
+            padding: 110px 0 70px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(232, 33, 39, 0.08) 0%, transparent 65%), #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .page-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: var(--red);
+            text-transform: uppercase;
+            padding: 6px 18px;
+            background: rgba(232, 33, 39, 0.1);
+            border: 1px solid rgba(232, 33, 39, 0.25);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .page-hero h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+        .page-hero h1 .highlight { color: var(--red); }
+        .page-hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 660px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== FILTER TABS ===== */
+        .filter-section {
+            padding: 0 0 50px;
+        }
+        .filters-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 22px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+
+        /* ===== FEATURED ARTICLE ===== */
+        .featured-article-section {
+            padding-bottom: 70px;
+        }
+        .featured-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            transition: all 0.4s;
+        }
+        .featured-card:hover {
+            border-color: var(--border-light);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+            transform: translateY(-4px);
+        }
+        .featured-img-wrap {
+            position: relative;
+            min-height: 360px;
+            background: #111;
+        }
+        .featured-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            background: var(--red);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .featured-content {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .post-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 16px;
+        }
+        .post-meta span { display: flex; align-items: center; gap: 6px; }
+        .post-meta i { color: var(--red); font-size: 12px; }
+        .featured-content h2 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .featured-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .btn-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--red);
+            font-weight: 700;
+            font-size: 14px;
+            transition: gap 0.3s;
+        }
+        .btn-read:hover { gap: 12px; }
+
+        /* ===== BLOG GRID ===== */
+        .blog-grid-section {
+            padding-bottom: 100px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        .blog-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+        .blog-thumb {
+            height: 200px;
+            background: #181818;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .blog-card:hover .blog-thumb img {
+            transform: scale(1.05);
+        }
+        .blog-category {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid var(--border-light);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 0.5px;
+        }
+        .blog-body {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .blog-body h3 {
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+        .blog-body p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        /* ===== NEWSLETTER BOX ===== */
+        .newsletter-section {
+            padding-bottom: 90px;
+        }
+        .newsletter-box {
+            background: linear-gradient(135deg, #141414, #1a1a1a);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        .newsletter-box h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .newsletter-box p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin: 0 auto 28px;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+        .newsletter-input {
+            flex: 1;
+            background: #0d0d0d;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: #fff;
+            outline: none;
+            font-family: inherit;
+        }
+        .newsletter-input:focus { border-color: var(--red); }
+        .btn-subscribe {
+            padding: 14px 28px;
+            background: var(--red);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .btn-subscribe:hover { background: var(--red-dark); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 0;
+            background: var(--bg-secondary);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        .footer-brand .tesla-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+        }
+        .footer-brand .brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-left: 12px;
+            border-left: 2px solid var(--border-light);
+            padding-left: 12px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 360px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .footer-socials a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover { color: var(--red); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 24px;
+        }
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            text-align: right;
+            line-height: 1.6;
+        }
+        .footer-disclaimer strong { color: #f59e0b; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .featured-card { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(10,10,10,0.98);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-disclaimer { text-align: center; }
+            .page-hero { padding: 80px 0 50px; }
+            .page-hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="tesla-logo">TESLA</span>
+                <span>TESLA INITIATE</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="services.html">Invest</a>
+                <a href="index.html#plans">Plans</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="meet-and-greet.html" class="meet-greet">Meet &amp; Greet</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="location.href='faq.html'">Login</button>
+                <button class="btn-signup" onclick="location.href='index.html#plans'">Sign Up</button>
+                <div class="mobile-toggle" id="mobileToggle" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-tag">MARKET INTELLIGENCE</span>
+            <h1>Insights, Research &amp; <span class="highlight">Market News</span></h1>
+            <p>In-depth analysis on autonomous robotics, EV macro trends, clean energy infrastructure yields, and algorithmic trading breakthroughs.</p>
+        </div>
+    </header>
+
+    <!-- ===== FILTER TABS ===== -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filters-wrapper">
+                <button class="filter-btn active">All Articles</button>
+                <button class="filter-btn">AI &amp; Robotics</button>
+                <button class="filter-btn">EV Market</button>
+                <button class="filter-btn">Clean Energy</button>
+                <button class="filter-btn">Quantitative Trading</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED ARTICLE ===== -->
+    <section class="featured-article-section">
+        <div class="container">
+            <div class="featured-card">
+                <div class="featured-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" alt="Optimus Robotics" onerror="this.parentElement.style.background='linear-gradient(135deg,#1f1f2e,#111)'">
+                    <span class="featured-badge">FEATURED INSIGHT</span>
+                </div>
+                <div class="featured-content">
+                    <div class="post-meta">
+                        <span><i class="far fa-calendar"></i> October 2026</span>
+                        <span><i class="far fa-clock"></i> 7 min read</span>
+                    </div>
+                    <h2>Tesla Optimus: The Multi-Trillion Dollar Humanoid Robotics Shift</h2>
+                    <p>An exhaustive breakdown of mass automated production economics, early pool returns, and how institutional capital is positioning for the next industrial era.</p>
+                    <a href="contact.html" class="btn-read">Read Full Research →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG GRID ===== -->
+    <section class="blog-grid-section">
+        <div class="container">
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Solar Energy" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">CLEAN ENERGY</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Oct 14, 2026</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>Powerwall 3 &amp; Megapack: Grid Arbitrage Economics</h3>
+                        <p>How decentralized energy storage networks are outperforming traditional fixed-income yields across deregulated power markets.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1617886903355-9354bb57751f?w=600&q=80" alt="Algorithmic Trading" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">QUANT TRADING</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Oct 10, 2026</span>
+                            <span><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                        <h3>Why 90% Signal Accuracy is the New Standard</h3>
+                        <p>The mathematical models behind our AI-curated watchlists and automated multi-asset order execution mechanics.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1690561565498-9710e4e709b3?w=600&q=80" alt="Cybertruck Fleet" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">EV FLEET</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Oct 05, 2026</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>Cybertruck Commercial Fleets: ROI Assessment</h3>
+                        <p>Total cost of ownership vs. operational earnings: why logistics conglomerates are shifting to stainless steel electric platforms.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80" alt="Crypto Security" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">CRYPTO ASSETS</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Sep 28, 2026</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>Military-Grade Crypto Architecture Explained</h3>
+                        <p>Exploring multi-party computation (MPC), geographic air-gapped vaults, and zero-knowledge custody protocols.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&q=80" alt="Global Connectivity" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">CONNECTIVITY</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Sep 22, 2026</span>
+                            <span><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                        <h3>Starlink V3 Constellation &amp; Low-Latency Trading</h3>
+                        <p>How satellite direct-to-cell infrastructure reduces financial routing latencies between global stock exchanges.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80" alt="Model S Plaid" onerror="this.parentElement.style.background='#16213e'">
+                        <span class="blog-category">INNOVATION</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> Sep 18, 2026</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>Autonomous Robotaxi Revenue Sharing Protocols</h3>
+                        <p>Preparing investor portfolios for uncrewed vehicle network distribution and passive mileage yield distributions.</p>
+                        <a href="contact.html" class="btn-read">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h3>Stay Ahead of the <span style="color: var(--red);">Markets</span></h3>
+                <p>Receive exclusive weekly institutional research, signal updates, and early vehicle allocation announcements directly in your inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center;">
+                        <span class="tesla-logo">TESLA</span>
+                        <span class="brand-name">TESLA INITIATE</span>
+                    </div>
+                    <p>Your all-in-one investment platform powered by Tesla technology — stocks, crypto, EVs, solar, and robotics. Trusted by investors in 89+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="services.html">Investments</a>
+                    <a href="services.html#trading">Stock Trading</a>
+                    <a href="services.html#crypto">Crypto Wallet</a>
+                    <a href="inventory.html">EV Marketplace</a>
+                    <a href="services.html#solar">Solar &amp; Energy</a>
+                    <a href="services.html#robotics">Optimus Robotics</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="about.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="terms.html">Risk Disclosure</a>
+                    <a href="privacy.html">AML Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">&copy; 2026 Tesla Initiate. All rights reserved.</div>
+                <div class="footer-disclaimer"><strong>Risk Warning:</strong> Trading and investing involve significant risk. Past performance is not indicative of future results. Please read our full risk disclosure before committing any funds.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

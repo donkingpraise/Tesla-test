@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tesla Initiate FAQ — Answers to common inquiries regarding investments, regulatory compliance, account management, and crypto deposits.">
+    <title>Frequently Asked Questions — Tesla Initiate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --red: #e82127;
+            --red-dark: #c41a1f;
+            --red-glow: rgba(232, 33, 39, 0.3);
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0f0f0f;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border-color: #1e1e1e;
+            --border-light: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a6;
+            --text-muted: #6b6b6b;
+            --nav-height: 70px;
+            --container-max: 1280px;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .nav-brand .tesla-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+            border-right: 2px solid var(--border-light);
+            padding-right: 12px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+        }
+        .nav-links a.meet-greet {
+            color: var(--red);
+            font-weight: 500;
+        }
+        .nav-links a.meet-greet::before {
+            content: '🎥';
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-login {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+        .btn-login:hover { background: rgba(255,255,255,0.12); }
+        .btn-signup {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--red);
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn-signup:hover { background: var(--red-dark); box-shadow: 0 4px 20px var(--red-glow); }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: var(--nav-height);
+            padding: 110px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(232, 33, 39, 0.08) 0%, transparent 65%), #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: var(--red);
+            text-transform: uppercase;
+            padding: 6px 18px;
+            background: rgba(232, 33, 39, 0.1);
+            border: 1px solid rgba(232, 33, 39, 0.25);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .page-hero h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+        .page-hero h1 .highlight { color: var(--red); }
+        .page-hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 660px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-box-wrap {
+            max-width: 580px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-box-wrap i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        .search-input {
+            width: 100%;
+            background: #121212;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px 20px 16px 52px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(232,33,39,0.15);
+        }
+
+        /* ===== FAQ LAYOUT ===== */
+        .faq-section {
+            padding: 60px 0 100px;
+        }
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        /* ===== SIDEBAR CATEGORIES ===== */
+        .category-sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .category-sidebar h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .cat-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            transition: all 0.3s;
+            margin-bottom: 6px;
+        }
+        .cat-btn:hover, .cat-btn.active {
+            background: rgba(232, 33, 39, 0.1);
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* ===== REGULATORY NOTICE ===== */
+        .regulatory-card {
+            background: rgba(232, 33, 39, 0.05);
+            border: 1px solid rgba(232, 33, 39, 0.25);
+            border-radius: 16px;
+            padding: 26px 30px;
+            margin-bottom: 36px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .regulatory-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(232, 33, 39, 0.15);
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .regulatory-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .regulatory-card p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== ACCORDIONS ===== */
+        .faq-accordion-group {
+            margin-bottom: 40px;
+        }
+        .group-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .group-title::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            background: var(--red);
+        }
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .accordion-item:hover {
+            border-color: var(--border-light);
+        }
+        .accordion-header {
+            width: 100%;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+        .accordion-header i {
+            color: var(--red);
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+        .accordion-item.open .accordion-header i {
+            transform: rotate(180deg);
+        }
+        .accordion-body {
+            display: none;
+            padding: 0 24px 22px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 4px;
+            padding-top: 16px;
+        }
+        .accordion-item.open .accordion-body {
+            display: block;
+        }
+
+        /* ===== CONTACT SUPPORT CARD ===== */
+        .support-cta-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .support-cta-box h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .support-cta-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 22px;
+        }
+        .btn-contact-support {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--red);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-contact-support:hover {
+            background: var(--red-dark);
+            box-shadow: 0 4px 20px var(--red-glow);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 0;
+            background: var(--bg-secondary);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        .footer-brand .tesla-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+        }
+        .footer-brand .brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-left: 12px;
+            border-left: 2px solid var(--border-light);
+            padding-left: 12px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 360px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .footer-socials a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover { color: var(--red); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 24px;
+        }
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            text-align: right;
+            line-height: 1.6;
+        }
+        .footer-disclaimer strong { color: #f59e0b; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .faq-layout { grid-template-columns: 1fr; }
+            .category-sidebar { position: static; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(10,10,10,0.98);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-disclaimer { text-align: center; }
+            .page-hero { padding: 80px 0 50px; }
+            .page-hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="tesla-logo">TESLA</span>
+                <span>TESLA INITIATE</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="services.html">Invest</a>
+                <a href="index.html#plans">Plans</a>
+                <a href="about.html">About</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="meet-and-greet.html" class="meet-greet">Meet &amp; Greet</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="location.href='faq.html'">Login</button>
+                <button class="btn-signup" onclick="location.href='index.html#plans'">Sign Up</button>
+                <div class="mobile-toggle" id="mobileToggle" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-tag"><i class="fas fa-question-circle"></i> HELP CENTER</span>
+            <h1>Frequently Asked <span class="highlight">Questions</span></h1>
+            <p>Everything you need to know about our platform, deposits, trading signals, and account management.</p>
+            <div class="search-box-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="faqSearch" class="search-input" placeholder="Search questions..." onkeyup="filterFaq()">
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== FAQ MAIN ===== -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-layout">
+                <!-- Sidebar -->
+                <aside class="category-sidebar">
+                    <h4>Categories</h4>
+                    <button class="cat-btn active" onclick="jumpToCategory('all')"><i class="fas fa-list"></i> All Questions</button>
+                    <button class="cat-btn" onclick="jumpToCategory('regulatory')"><i class="fas fa-gavel"></i> Regulatory &amp; Legal</button>
+                    <button class="cat-btn" onclick="jumpToCategory('general')"><i class="fas fa-chart-line"></i> General &amp; Forex</button>
+                    <button class="cat-btn" onclick="jumpToCategory('deposits')"><i class="fas fa-wallet"></i> Deposits &amp; Fees</button>
+                    <button class="cat-btn" onclick="jumpToCategory('account')"><i class="fas fa-user-shield"></i> Account Management</button>
+                    <button class="cat-btn" onclick="location.href='contact.html'"><i class="fas fa-envelope"></i> Contact Support</button>
+                </aside>
+
+                <!-- Questions Content -->
+                <div>
+                    <!-- Regulatory Notice Box -->
+                    <div class="regulatory-card" id="regulatoryNotice">
+                        <div class="regulatory-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div>
+                            <h3>Important Regulatory Notice</h3>
+                            <p>This platform is NOT regulated by the Financial Conduct Authority (FCA). We operate as an educational company providing insights into Forex markets and are registered as a business with Companies House–HMRC. Trade signals and ideas shared are not intended for live investment purposes. Please consult a qualified financial advisor before making any investment decisions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Category: Regulatory & Legal -->
+                    <div class="faq-accordion-group" id="regulatoryGroup">
+                        <h3 class="group-title">Regulatory &amp; Legal</h3>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                What is the regulatory status of Tesla Initiate?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Tesla Initiate is registered with Companies House in the UK and adheres to strict international operational standards, including AML (Anti-Money Laundering) and KYC guidelines. We provide access to multi-asset technology, educational materials, and automated execution software.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                Are my invested funds legally protected?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Yes. All client funds are maintained in segregated Tier-1 accounts separate from corporate capital. Crypto assets are secured in air-gapped cold vaults insured against external intrusion.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category: General & Forex -->
+                    <div class="faq-accordion-group" id="generalGroup">
+                        <h3 class="group-title">General &amp; Forex</h3>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                How does the 90% signal accuracy work?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Our quantitative algorithmic suite evaluates over 2,000 real-time market data points across equity, forex, and digital asset markets. Signals are filtered through machine learning models trained on 10+ years of historical market cycles before execution.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                Can I switch between manual trading and automated bots?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Absolutely. Your portfolio dashboard allows you to divide capital between automated bots, copy-trading top specialists, and manual execution at any time without penalty fees.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                How do the Tesla Solar &amp; Optimus Pools generate yield?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Clean energy pools earn yields from real-time power grid feeding and battery arbitrage contracts. The Optimus pools represent early private allocation shares designed to compound as automated industrial units achieve global distribution.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Deposits & Fees -->
+                    <div class="faq-accordion-group" id="depositsGroup">
+                        <h3 class="group-title">Deposits &amp; Fees</h3>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                What deposit methods are supported?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                We support instant deposits through major cryptocurrencies (BTC, ETH, USDT-TRC20, USDT-ERC20, SOL), bank wire transfers (SWIFT / SEPA), and credit/debit card gateways.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                How long do withdrawals take?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Crypto withdrawals are processed automatically and confirmed within 15–30 minutes. Bank wire withdrawals generally settle within 1–2 business days depending on your financial institution.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                Are there any maintenance or hidden withdrawal fees?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                No hidden fees. We believe in complete transparency. Standard blockchain gas fees apply for on-chain crypto transfers, and all fee schedules are visible prior to transaction authorization.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Account Management -->
+                    <div class="faq-accordion-group" id="accountGroup">
+                        <h3 class="group-title">Account Management</h3>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                How do I complete identity verification (KYC)?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Simply upload a government-issued photo ID (passport, national ID, or driver’s license) and proof of address. Verification is automated and typically completed within 5 minutes.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                What are the perks of upgrading to Pro or Elite tiers?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-body">
+                                Pro tier ($25,000+) unlocks 24/7 dedicated account managers, real-time proprietary analytics feeds, and invitations to exclusive VIP conferences. Elite tier grants bespoke portfolio structuring and direct access to institutional trading desks.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Support Box -->
+                    <div class="support-cta-box">
+                        <h3>Still have questions?</h3>
+                        <p>Our dedicated support team is available 24/7 to guide you through any aspect of your investment journey.</p>
+                        <a href="contact.html" class="btn-contact-support"><i class="fas fa-envelope"></i> Contact Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center;">
+                        <span class="tesla-logo">TESLA</span>
+                        <span class="brand-name">TESLA INITIATE</span>
+                    </div>
+                    <p>Your all-in-one investment platform powered by Tesla technology — stocks, crypto, EVs, solar, and robotics. Trusted by investors in 89+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="services.html">Investments</a>
+                    <a href="services.html#trading">Stock Trading</a>
+                    <a href="services.html#crypto">Crypto Wallet</a>
+                    <a href="inventory.html">EV Marketplace</a>
+                    <a href="services.html#solar">Solar &amp; Energy</a>
+                    <a href="services.html#robotics">Optimus Robotics</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="about.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="terms.html">Risk Disclosure</a>
+                    <a href="privacy.html">AML Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">&copy; 2026 Tesla Initiate. All rights reserved.</div>
+                <div class="footer-disclaimer"><strong>Risk Warning:</strong> Trading and investing involve significant risk. Past performance is not indicative of future results. Please read our full risk disclosure before committing any funds.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            item.classList.toggle('open');
+        }
+
+        function filterFaq() {
+            const query = document.getElementById('faqSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.accordion-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function jumpToCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            if (cat === 'all') {
+                document.querySelectorAll('.faq-accordion-group').forEach(g => g.style.display = 'block');
+                document.getElementById('regulatoryNotice').style.display = 'flex';
+            } else if (cat === 'regulatory') {
+                document.querySelectorAll('.faq-accordion-group').forEach(g => g.style.display = 'none');
+                document.getElementById('regulatoryGroup').style.display = 'block';
+                document.getElementById('regulatoryNotice').style.display = 'flex';
+            } else {
+                document.querySelectorAll('.faq-accordion-group').forEach(g => g.style.display = 'none');
+                document.getElementById('regulatoryNotice').style.display = 'none';
+                const el = document.getElementById(cat + 'Group');
+                if (el) el.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

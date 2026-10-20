@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tesla Initiate Services — Comprehensive investment ecosystem spanning EV fleet assets, Solar energy infrastructure, Optimus robotics pools, and algorithmic trading.">
+    <title>Services &amp; Investments — Tesla Initiate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --red: #e82127;
+            --red-dark: #c41a1f;
+            --red-glow: rgba(232, 33, 39, 0.3);
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0f0f0f;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border-color: #1e1e1e;
+            --border-light: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a6;
+            --text-muted: #6b6b6b;
+            --nav-height: 70px;
+            --container-max: 1280px;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .nav-brand .tesla-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+            border-right: 2px solid var(--border-light);
+            padding-right: 12px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+        }
+        .nav-links a.meet-greet {
+            color: var(--red);
+            font-weight: 500;
+        }
+        .nav-links a.meet-greet::before {
+            content: '🎥';
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-login {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+        .btn-login:hover { background: rgba(255,255,255,0.12); }
+        .btn-signup {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--red);
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn-signup:hover { background: var(--red-dark); box-shadow: 0 4px 20px var(--red-glow); }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: var(--nav-height);
+            padding: 110px 0 90px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(232, 33, 39, 0.08) 0%, transparent 65%), #0a0a0a;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .page-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .page-hero h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .page-hero h1 .highlight { color: var(--red); }
+        .page-hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .hero-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--red);
+            margin: 32px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== SECTION COMMONS ===== */
+        .section { padding: 90px 0; }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .section-label::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: var(--red);
+        }
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .section-title .highlight { color: var(--red); }
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        /* ===== PILLARS GRID ===== */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 32px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pillar-card:hover {
+            border-color: var(--border-light);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+        }
+        .pillar-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(232, 33, 39, 0.1);
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 24px;
+        }
+        .pillar-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .pillar-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .pillar-features {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: auto;
+        }
+        .pillar-features li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pillar-features li i {
+            color: var(--red);
+            font-size: 12px;
+        }
+
+        /* ===== PRICING GRID ===== */
+        .pricing-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 90px 0;
+        }
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .pricing-header .section-desc { margin: 0 auto; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            align-items: start;
+        }
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-light);
+        }
+        .pricing-card.popular {
+            border-color: var(--red);
+            transform: scale(1.04);
+            box-shadow: 0 0 40px rgba(232, 33, 39, 0.12);
+        }
+        .pricing-card.popular:hover {
+            transform: scale(1.04) translateY(-4px);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 20px;
+            background: var(--red);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .pricing-tier {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .pricing-amount {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .pricing-return {
+            font-size: 14px;
+            color: var(--red);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 28px;
+        }
+        .pricing-features li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pricing-features li::before {
+            content: '●';
+            color: var(--red);
+            font-size: 8px;
+            flex-shrink: 0;
+        }
+        .btn-plan {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-plan-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: #fff;
+        }
+        .btn-plan-outline:hover { background: rgba(255,255,255,0.06); }
+        .btn-plan-filled {
+            background: var(--red);
+            color: #fff;
+            border: none;
+        }
+        .btn-plan-filled:hover { background: var(--red-dark); box-shadow: 0 4px 20px var(--red-glow); }
+
+        /* ===== CTA ===== */
+        .cta-section { padding: 90px 0; }
+        .cta-box {
+            background: linear-gradient(135deg, #141414, #1a1a1a);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(232,33,39,0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .cta-box h2 .highlight { color: var(--red); }
+        .cta-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--red);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background: var(--red-dark);
+            box-shadow: 0 4px 24px var(--red-glow);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 0;
+            background: var(--bg-secondary);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        .footer-brand .tesla-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--red);
+        }
+        .footer-brand .brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-left: 12px;
+            border-left: 2px solid var(--border-light);
+            padding-left: 12px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 360px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .footer-socials a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover { color: var(--red); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 24px;
+        }
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            text-align: right;
+            line-height: 1.6;
+        }
+        .footer-disclaimer strong { color: #f59e0b; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .page-hero h1 { font-size: 40px; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .cta-box { padding: 60px 30px; }
+            .cta-box h2 { font-size: 32px; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(10,10,10,0.98);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-disclaimer { text-align: center; }
+            .page-hero { padding: 80px 0 60px; }
+            .page-hero h1 { font-size: 32px; }
+            .section-title { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="tesla-logo">TESLA</span>
+                <span>TESLA INITIATE</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="services.html" class="active">Invest</a>
+                <a href="index.html#plans">Plans</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="meet-and-greet.html" class="meet-greet">Meet &amp; Greet</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="location.href='faq.html'">Login</button>
+                <button class="btn-signup" onclick="location.href='index.html#plans'">Sign Up</button>
+                <div class="mobile-toggle" id="mobileToggle" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-tag">OUR PLATFORM</span>
+            <h1>A Complete <span class="highlight">Financial Ecosystem</span></h1>
+            <p>Everything you need to grow, manage, and protect your wealth — in one seamless platform built for the future.</p>
+            <div class="hero-divider"></div>
+        </div>
+    </header>
+
+    <!-- ===== PILLARS SECTION ===== -->
+    <section class="section" id="trading">
+        <div class="container">
+            <div class="section-label">INVESTMENT PILLARS</div>
+            <h2 class="section-title">Institutional-Grade <span class="highlight">Solutions</span></h2>
+            <p class="section-desc">Harness proprietary algorithmic intelligence, green energy infrastructure, and next-generation robotics pools.</p>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Smart Investments</h3>
+                        <p>Automated flexible plans with recurring contributions, compounding returns, and real-time portfolio tracking.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Algorithmic rebalancing</li>
+                        <li><i class="fas fa-check"></i> Compounding monthly yield</li>
+                        <li><i class="fas fa-check"></i> Institutional diversification</li>
+                    </ul>
+                </div>
+
+                <div class="pillar-card" id="solar">
+                    <div>
+                        <div class="pillar-icon"><i class="fas fa-solar-panel"></i></div>
+                        <h3>Solar &amp; Energy</h3>
+                        <p>Tesla Solar Panel and Powerwall investment portfolios. Earn returns while contributing to a sustainable future.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Clean energy revenue share</li>
+                        <li><i class="fas fa-check"></i> Powerwall grid arbitrage</li>
+                        <li><i class="fas fa-check"></i> ESG-certified infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="pillar-card" id="robotics">
+                    <div>
+                        <div class="pillar-icon"><i class="fas fa-robot"></i></div>
+                        <h3>Robotics (Optimus)</h3>
+                        <p>Early-access investment pools in Tesla's Optimus humanoid robot — positioned at the forefront of AI and automation.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Early-stage equity participation</li>
+                        <li><i class="fas fa-check"></i> Automation productivity index</li>
+                        <li><i class="fas fa-check"></i> High alpha tech asset class</li>
+                    </ul>
+                </div>
+
+                <div class="pillar-card" id="crypto">
+                    <div>
+                        <div class="pillar-icon"><i class="fab fa-bitcoin"></i></div>
+                        <h3>Crypto Wallet</h3>
+                        <p>Seamless crypto deposits and withdrawals with military-grade security. 50+ assets, instant transactions.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Cold-storage insurance</li>
+                        <li><i class="fas fa-check"></i> Instant BTC/ETH/USDT swaps</li>
+                        <li><i class="fas fa-check"></i> Zero deposit transaction fees</li>
+                    </ul>
+                </div>
+
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h3>Live Stock Trading</h3>
+                        <p>Real-time quotes, AI-curated news, and intelligent watchlists. 90% signal accuracy keeps you ahead of the market.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Fractional shares trading</li>
+                        <li><i class="fas fa-check"></i> Millisecond execution speeds</li>
+                        <li><i class="fas fa-check"></i> Real-time sentiment metrics</li>
+                    </ul>
+                </div>
+
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-icon"><i class="fas fa-car"></i></div>
+                        <h3>EV Marketplace</h3>
+                        <p>Curated Tesla lineup — Model S, X, 3, Y, Cybertruck. Flexible financing, zero-emission luxury, and VIP delivery.</p>
+                    </div>
+                    <ul class="pillar-features">
+                        <li><i class="fas fa-check"></i> Direct factory allocation</li>
+                        <li><i class="fas fa-check"></i> Crypto-to-car checkout</li>
+                        <li><i class="fas fa-check"></i> Global doorstep delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING SECTION ===== -->
+    <section class="pricing-section" id="plans">
+        <div class="container">
+            <div class="pricing-header">
+                <div class="section-label" style="justify-content: center;">GROWTH TIERS</div>
+                <h2 class="section-title">Choose Your <span class="highlight">Growth Tier</span></h2>
+                <p class="section-desc">Flexible plans built for every ambition — from first-time investors to institutional portfolios.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">STARTER</div>
+                    <div class="pricing-amount">$500</div>
+                    <div class="pricing-return">Up to 8% monthly</div>
+                    <ul class="pricing-features">
+                        <li>Basic instruments</li>
+                        <li>Email support</li>
+                        <li>Education center</li>
+                        <li>Weekly reports</li>
+                    </ul>
+                    <a href="contact.html" class="btn-plan btn-plan-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">GROWTH</div>
+                    <div class="pricing-amount">$5,000</div>
+                    <div class="pricing-return">Up to 14% monthly</div>
+                    <ul class="pricing-features">
+                        <li>All instrument types</li>
+                        <li>Priority support</li>
+                        <li>Education center</li>
+                        <li>Daily reports</li>
+                    </ul>
+                    <a href="contact.html" class="btn-plan btn-plan-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="pricing-tier">PRO</div>
+                    <div class="pricing-amount">$25,000</div>
+                    <div class="pricing-return">Up to 22% monthly</div>
+                    <ul class="pricing-features">
+                        <li>Full instrument access</li>
+                        <li>24/7 live support</li>
+                        <li>Dedicated manager</li>
+                        <li>Real-time analytics</li>
+                        <li>VIP events access</li>
+                    </ul>
+                    <a href="contact.html" class="btn-plan btn-plan-filled">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">ELITE</div>
+                    <div class="pricing-amount">$100,000</div>
+                    <div class="pricing-return">Up to 30% monthly</div>
+                    <ul class="pricing-features">
+                        <li>All Pro features</li>
+                        <li>Private portfolio</li>
+                        <li>Hedge fund access</li>
+                        <li>Concierge support</li>
+                    </ul>
+                    <a href="contact.html" class="btn-plan btn-plan-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">INSTITUTIONAL</div>
+                    <div class="pricing-amount">$1M+</div>
+                    <div class="pricing-return">Custom returns</div>
+                    <ul class="pricing-features">
+                        <li>Bespoke strategy</li>
+                        <li>White-glove service</li>
+                        <li>Custom instruments</li>
+                        <li>Direct exec line</li>
+                    </ul>
+                    <a href="contact.html" class="btn-plan btn-plan-outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to Build Your <span class="highlight">Financial Future?</span></h2>
+                <p>Join 13,000+ active traders across 89 countries already growing their wealth with Tesla Initiate.</p>
+                <a href="contact.html" class="btn-primary"><i class="fas fa-rocket"></i> Create Free Account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center;">
+                        <span class="tesla-logo">TESLA</span>
+                        <span class="brand-name">TESLA INITIATE</span>
+                    </div>
+                    <p>Your all-in-one investment platform powered by Tesla technology — stocks, crypto, EVs, solar, and robotics. Trusted by investors in 89+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="services.html">Investments</a>
+                    <a href="services.html#trading">Stock Trading</a>
+                    <a href="services.html#crypto">Crypto Wallet</a>
+                    <a href="inventory.html">EV Marketplace</a>
+                    <a href="services.html#solar">Solar &amp; Energy</a>
+                    <a href="services.html#robotics">Optimus Robotics</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="about.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="terms.html">Risk Disclosure</a>
+                    <a href="privacy.html">AML Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">&copy; 2026 Tesla Initiate. All rights reserved.</div>
+                <div class="footer-disclaimer"><strong>Risk Warning:</strong> Trading and investing involve significant risk. Past performance is not indicative of future results. Please read our full risk disclosure before committing any funds.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
